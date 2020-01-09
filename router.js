@@ -1,13 +1,12 @@
 'use strict';
 
-var Router = {
-    routes = [],
-    root: '/',
+export class Router {
+    method() {
+        window.addEventListener('popstate', this.callback);
+    }
 
-    event() {
-        window.addEventListener('popstate', function(event) {
-            
-        })
+    catchEvent(callback) {
+        this.callback = callback
     }
 }
 
