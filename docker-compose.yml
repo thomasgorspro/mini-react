@@ -1,0 +1,9 @@
+version: "3"
+services:
+    node:
+        image: node:alpine
+        user: node
+        working_dir: /home/node/app
+        entrypoint: node
+        volumes: 
+            - .:/home/node/app
