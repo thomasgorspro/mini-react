@@ -1,14 +1,6 @@
-import { Router, Route } from './lib/Router.js';
-import DOM from './lib/DOM.js';
-import HomeComponent from './components/HomeComponent.js';
+import AppRouter from './Router.js';
+import DOM from './mini-react/lib/DOM.js';
 
-const routes =  {
-    'routes': [
-        new Route('Home', '/'),
-    ],
-    'notFound': new Route('404', '/notFound')
-};
-const Router = new Router(routes);
-const route = Router.currentRoute();
+const result = AppRouter.getRoute(location);
 
-DOM.render(HomeComponent);
+DOM.render(result.getComponent());

@@ -1,15 +1,14 @@
 'use strict';
-import { createNode } from '../lib/DOM.js';
-import Component from './Component.js';
+import Component from '../mini-react/components/Component.js';
 
 class HomeComponent extends Component {
 
-    constructor(properties, child = {}) {
-        super(properties);        
+    constructor(state) {
+        super(state);        
     }
 
-    render = state => (
-        createNode({
+    display = () => (
+        {
             type: "h1",
             properties: {
                 className: "container text-center",
@@ -45,7 +44,7 @@ class HomeComponent extends Component {
                     }
                 },
             ]
-        })
+        }
     );
 } 
 export default HomeComponent;
