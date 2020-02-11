@@ -17,7 +17,7 @@ class DOM {
                 newElement.textContent = properties[propertyName];
                 return;
             }
-            newElement.setAttribute(propertieName, properties[propertyName]);
+            newElement.setAttribute(propertyName, properties[propertyName]);
         });
         children.forEach(child => {
             if(!(child instanceof Component)) {
