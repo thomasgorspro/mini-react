@@ -12,19 +12,18 @@ class DOM {
     createNode = element => {
         const { type, properties, children = [] } = element;
         const newElement = document.createElement(type);
-        console.log(type, properties, children, '---------');
-        Object.keys(properties).forEach(propertieName => {
-            if(propertieName === 'text') {
-                newElement.textContent = properties[propertieName];
+        Object.keys(properties).forEach(propertyName => {
+            if(propertyName === 'text') {
+                newElement.textContent = properties[propertyName];
                 return;
             }
-            newElement.setAttribute(propertieName, properties[propertieName]);
+            newElement.setAttribute(propertieName, properties[propertyName]);
         });
         children.forEach(child => {
             if(!(child instanceof Component)) {
-                console.log(child)
                 newElement.appendChild(this.createNode(child));
             }
+            newElement.appendChild(this.render(child))
         });
         return newElement;
     };
