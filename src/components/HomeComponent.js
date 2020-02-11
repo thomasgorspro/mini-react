@@ -9,10 +9,10 @@ class HomeComponent extends Component {
 
     display = () => (
         {
-            type: "h1",
+            type: "div",
             properties: {
                 className: "container text-center",
-                id: "title",
+                id: "presentation-head",
                 text: "Hello",
             },
             children:
@@ -24,16 +24,18 @@ class HomeComponent extends Component {
                         className: "text-center",
                         text: 'Hello World!' 
                     },
-                    children: 
-                    {
-                        type: "div",
-                        properties:
+                    children:
+                    [ 
                         {
-                            className: "container text-center",
-                            id: "presentation",
-                            text: "Hello World! I present to you this little librairie which is not React at all, I swear cause it suck ngl."
-                        }
-                    },
+                            type: "div",
+                            properties:
+                            {
+                                className: "container text-center",
+                                id: "presentation",
+                                text: "Hello World! I present to you this little librairie which is not React at all, I swear cause it suck ngl."
+                            }
+                        },
+                    ]
                 },
                 {
                     type: "p",

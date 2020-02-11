@@ -1,12 +1,14 @@
-import { Router, Route } from  './mini-react/lib/Router.js.js';
-import  HomeComponent from './mini-react/components/HomeComponent.js.js';
+import { Router, Route } from  './mini-react/lib/Router.js';
+import HomeComponent from './components/HomeComponent.js';
+import notFoundComponent from './components/NotFoundComponent.js';
 
 const routes =  {
-    'routes': [
-        new Route('Home', '/', HomeComponent),
+    routes: [
+        new Route('Home', '/', new HomeComponent()),
     ],
-    'notFound': new Route('404', '/notFound')
-}
+    notFound: new Route('404', '/notFound', new notFoundComponent)
+};
+
 const AppRouter = new Router(routes);
 
 export default AppRouter;

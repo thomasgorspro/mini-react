@@ -6,7 +6,7 @@ export default class Component {
         this.state = state; 
     }
 
-    shouldUpdate = () => ( this.previousState !== this.state )
+    shouldUpdate = () => ( this.previousState !== this.state );
 
     setState = state => {
         this.previousState = this.state;
