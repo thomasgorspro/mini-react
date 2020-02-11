@@ -22,6 +22,7 @@ class DOM {
         children.forEach(child => {
             if(!(child instanceof Component)) {
                 newElement.appendChild(this.createNode(child));
+                return;
             }
             newElement.appendChild(this.render(child))
         });
