@@ -13,9 +13,10 @@ class CounterComponent extends Component {
     display = () => {
         const {count = 0} = this.state;
         return {
-            type: "label",
+            type: "h1",
             properties: {
                 id: "counter",
+                class: "center-align",
                 text: `You clicked this button ${count}`
             },
             children: [
@@ -24,6 +25,8 @@ class CounterComponent extends Component {
                     properties: {
                         id: "counter-button",
                         text: "Count go up!",
+                        class: "btn-large red",
+                        style: "margin: 1rem;",
                         on: {
                             click: this.incrementCounter
                         }
@@ -33,8 +36,8 @@ class CounterComponent extends Component {
                     type: "a",
                     properties:
                     {
-                        className: "text-center",
                         href: "/",
+                        class: "btn-large",
                         text: "Home"
                     }
                 },

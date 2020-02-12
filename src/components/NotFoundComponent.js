@@ -7,10 +7,11 @@ class NotFoundComponent extends Component {
 
    display = () => (
        {
-           type: "h1",
+           type: "h3",
            properties: {
                id: "notFoundContainer",
-               text: `Nothing in ${this.props.slug} apparently`
+               class: "center-align red-text",
+               text: `Not Found ${this.props.slug}`
            }
        }
     );
