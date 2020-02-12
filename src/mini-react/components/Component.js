@@ -1,5 +1,3 @@
-'use strict'
-
 export default class Component {
     constructor(props) {
         this.props = props;
@@ -10,7 +8,7 @@ export default class Component {
 
     shouldUpdate = () => ( this.previousState !== this.state );
 
-    componentDidUpdate = () => {};
+    componentDidUpdate = () => {console.log()};
 
     setState = state => {
         this.previousState = this.state;
@@ -34,7 +32,13 @@ export default class Component {
                 newElement.textContent = properties[propertyName];
                 return;
             }
-            //if on x then onx = foo()
+            if(propertyName === 'on') {
+                const events = properties['on'];
+
+                Object.keys(events).forEach(eventName => {
+                    newElement.addEventListener(eventName, events[eventName]);
+                });
+            }
             newElement.setAttribute(propertyName, properties[propertyName]);
         });
 

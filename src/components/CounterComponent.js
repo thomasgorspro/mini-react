@@ -5,12 +5,10 @@ class CounterComponent extends Component {
         super(props);
     }
 
-    incrementCounter = () => {
-        const element = document.getElementById('counter-button');
-        const { count = 0 } = this.state;
-        element.onclick = () => {
-            this.setState({count: count++});
-        };
+    incrementCounter = (event) => {
+        console.log(this.state);
+        let { count = 0 } = this.state;
+        this.setState({count: count+1});
     };
 
     display = () => {
@@ -26,9 +24,9 @@ class CounterComponent extends Component {
                     type: "button",
                     properties: {
                         id: "counter-button",
-                        text: "Count up!",
+                        text: "Count go up!",
                         on: {
-                            click: () => this.incrementCounter()
+                            click: this.incrementCounter
                         }
                     }
                 }
