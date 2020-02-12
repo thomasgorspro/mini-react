@@ -13,20 +13,24 @@ class HomeComponent extends Component {
         {
             type: "div",
             properties: {
-                className: "container text-center",
-                id: "presentation-head",
-                text: "Hello",
+                class: "center-align",
             },
             children:
             [
+                {
+                    type: "h1",
+                    properties: {
+                        text: "Accueil",
+                    },
+                },
                 (new NotFoundComponent({slug: window.location.pathname})),
                 {
                     type: "a",
                     properties:
                     {
-                        className: "text-center",
+                        class: "btn-large",
                         href: "/count",
-                        text: "counter"
+                        text: "Counter"
                     }
                 },
             ]
