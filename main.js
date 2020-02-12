@@ -7,10 +7,12 @@ function render(template, options) {
   })
 }
 
+
+
 const nested_template = `
 <li data-id="{{ id }}">
   <p>
-    <strong>{{ name.first }} {{ name.last }}</strong>
+    <strong>{{ name.first }} {{ name.last }} {{ name.test.allo }}</strong>
     <small>{{ type }}</small>
   </p>
 </li>
@@ -20,7 +22,10 @@ const unAnimal = {
   id: '1',
   name: {
     first: 'un prenom',
-    last: 'un nom'
+    last: 'un nom',
+    test: {
+      allo: 'ok'
+    },
   },
   type: 'chat'
 }
