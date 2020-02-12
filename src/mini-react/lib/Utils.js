@@ -1,11 +1,3 @@
-Object.prototype.propAccess = (template, options) => {
-    return template.replace(/\{\{\s?([\w.]+)\s?\}\}/g, (match, variable) => {
-      return variable.split('.').reduce((previous, current) => {
-        return previous[current]
-      }, options) || ''
-    })
-}
-
 function type_check_v1(input, type) {
     if (input === null && type === "null" || typeof input === undefined && type === "undefined") {
         return true
@@ -41,6 +33,14 @@ console.log('type_check :\t'+type_check_v2('foo', {type: 'string', value: 'foo'}
 console.log('type_check :\t'+type_check_v2(['value1', 'value2'], {type: 'array'}));
 console.log('type_check :\t'+type_check_v2(1, {type: 'array'}));
 
+Object.prototype.interpolate = function (template) {  
+  return template.replace(/\{\{\s?([\w.]+)\s?\}\}/g, (match, variable) => {
+    return variable.split('.').reduce((previous, current) => {
+      return previous[current]
+    }, this) || ''
+  })
+}
+
 const unitTest = () => {
     const trainer = {
         name: 'Tom',
@@ -48,22 +48,23 @@ const unitTest = () => {
         favoritePokemon: {
             size: 170,
             name: 'Pikachu',
-            type: 'Electric',
-            evolution: {first: 'Raichu', second: 'Raichu++'}
+            type: 'électrique',
+            evolution: {first: 'Raichu'}
         }
     };
 
     const template = `
         <li>
           <p>
-            <strong>{{ favoritePokemon.name }}</strong>
-            <small>{{ favoritePokemon.type }}</small>
-            <small>{{ favoritePokemon.evolution.first }} {{ favoritePokemon.evolution.second }}</small>
+            <strong>Je m'appelle {{ name }}</strong>
+            <small>Mon Pokémon favori est {{ favoritePokemon.name }}, il est de type {{ favoritePokemon.type }}</small>
+            <small>Son évolution s'appelle {{ favoritePokemon.evolution.first }}</small>
           </p>
         </li>
-    `
+    `;
 
-    console.log('propAccess :\t'+propAccess(template, trainer));
+    const interpolatedTemplate = trainer.interpolate(template)
+    console.log(interpolatedTemplate);
 };
 
 unitTest();
