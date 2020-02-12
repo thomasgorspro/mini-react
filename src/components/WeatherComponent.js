@@ -6,7 +6,11 @@ class WeatherComponent extends Component {
    } 
 
    display = () => {
-       let weather = this.getWeather();
+       let weather = "not found"
+       this.getWeather().then(data => {
+           weather = data;
+       });
+
         return {
             type: "p",
             properties: {
@@ -16,16 +20,16 @@ class WeatherComponent extends Component {
         }
    };
 
-    getWeather = async () => {
+    getWeather = () => {
         const apiKey = 'cf78ba9982e3863f6daf7a79c270cd0b';
-        try {
-            let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=paris,fr&appid=${apiKey}`);
-            let data = response.json();
-            console.log(data);
-            return data;
-        } catch (e) {
-            console.log('fetch failed', e)
-        }
+            return fetch(`https://api.openweathermap.org/data/2.5/weather?q=paris,fr&appid=${apiKey}`).then(response => {
+                return response.json().then(data => {
+                    console.log(data);
+                });
+            })
+            .catch((e) => {
+            console.log(`Error: ${e}`);
+        });
     }
 }
 export default WeatherComponent;
