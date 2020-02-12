@@ -10,7 +10,7 @@ class HomeComponent extends Component {
         super(props);        
     }
 
-    display = () => (
+    display = async() => (
         {
             type: "div",
             properties: {
