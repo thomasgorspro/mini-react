@@ -20,13 +20,13 @@ class HomeComponent extends Component {
             children:
             [
                 (new NotFoundComponent({slug: window.location.pathname})),
-                (new CounterComponent()),
                 {
-                    type: "p",
+                    type: "a",
                     properties:
                     {
                         className: "text-center",
-                        text: "I would rather have this element as a Component but you do you"
+                        href: "/count",
+                        text: "counter"
                     }
                 },
             ]

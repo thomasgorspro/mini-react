@@ -8,14 +8,21 @@ export default class Component {
 
     shouldUpdate = () => ( this.previousState !== this.state );
 
-    componentDidUpdate = () => {console.log()};
-
     setState = state => {
         this.previousState = this.state;
         this.state = state;
         this.render();
         this.componentDidUpdate();
     }
+
+    componentDidUpdate = () => {
+        const newRenderedComponent = this.render();
+        const rootElement = document.getElementById('root');
+        while (rootElement.firstChild) {
+            rootElement.removeChild(rootElement.firstChild);
+          }
+        rootElement.appendChild(newRenderedComponent);
+    };
 
     render = () => {
         if(this.shouldUpdate()) {

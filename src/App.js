@@ -6,10 +6,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let renderedComponent = Component.render();
     rootElement.appendChild(renderedComponent);
-
-    Component.componentDidUpdate = () => {
-        const newRenderedComponent = Component.render();
-        rootElement.replaceChild(newRenderedComponent, renderedComponent);
-        renderedComponent = newRenderedComponent;
-    };
 });

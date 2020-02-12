@@ -5,8 +5,7 @@ class CounterComponent extends Component {
         super(props);
     }
 
-    incrementCounter = (event) => {
-        console.log(this.state);
+    incrementCounter = () => {
         let { count = 0 } = this.state;
         this.setState({count: count+1});
     };
@@ -29,7 +28,16 @@ class CounterComponent extends Component {
                             click: this.incrementCounter
                         }
                     }
-                }
+                },
+                {
+                    type: "a",
+                    properties:
+                    {
+                        className: "text-center",
+                        href: "/",
+                        text: "Home"
+                    }
+                },
             ]
         }
     };
