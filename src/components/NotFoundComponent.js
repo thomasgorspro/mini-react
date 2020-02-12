@@ -1,18 +1,18 @@
 import Component from '../mini-react/components/Component.js';
 
 class NotFoundComponent extends Component {
-   constructor(state) {
-       super(state);
+   constructor(props) {
+       super(props);
    } 
 
    display = () => (
        {
            type: "h1",
            properties: {
-               id: "404-container",
-               text: "Nothing here apparently"
+               id: "notFoundContainer",
+               text: `Nothing in ${this.props.slug} apparently`
            }
        }
-   );
+    );
 }
 export default NotFoundComponent;

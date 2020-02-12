@@ -6,9 +6,10 @@ const routes =  {
     routes: [
         new Route('Home', '/', new HomeComponent()),
     ],
-    notFound: new Route('404', '/notFound', new notFoundComponent)
+    notFound: new Route('404', '/notFound', new notFoundComponent({slug: window.location.pathname}))
 };
 
 const AppRouter = new Router(routes);
 
 export default AppRouter;
+

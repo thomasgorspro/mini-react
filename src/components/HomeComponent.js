@@ -1,10 +1,12 @@
 'use strict';
 import Component from '../mini-react/components/Component.js';
+import CounterComponent from './CounterComponent.js';
+import NotFoundComponent from './NotFoundComponent.js';
 
 class HomeComponent extends Component {
 
-    constructor(state) {
-        super(state);        
+    constructor(props) {
+        super(props);        
     }
 
     display = () => (
@@ -17,26 +19,8 @@ class HomeComponent extends Component {
             },
             children:
             [
-                {
-                    type: "div",
-                    properties:
-                    {
-                        className: "text-center",
-                        text: 'Hello World!' 
-                    },
-                    children:
-                    [ 
-                        {
-                            type: "div",
-                            properties:
-                            {
-                                className: "container text-center",
-                                id: "presentation",
-                                text: "Hello World! I present to you this little librairie which is not React at all, I swear cause it suck ngl."
-                            }
-                        },
-                    ]
-                },
+                (new NotFoundComponent({slug: window.location.pathname})),
+                (new CounterComponent()),
                 {
                     type: "p",
                     properties:

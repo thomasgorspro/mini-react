@@ -1,8 +1,15 @@
 import AppRouter from './Router.js';
-import DOM from './mini-react/lib/DOM.js';
 
-const result = AppRouter.getRoute(window.location.pathname);
-const Component = result.getComponent();
+document.addEventListener("DOMContentLoaded", () => {
+    const Component = AppRouter.getRoute(window.location.pathname).getComponent();
+    const rootElement = document.getElementById('root');
 
-const AppDOM = new DOM();
-AppDOM.render(Component);
+    let renderedComponent = Component.render();
+    rootElement.appendChild(renderedComponent);
+
+    Component.componentDidUpdate = () => {
+        const newRenderedComponent = Component.render();
+        rootElement.replaceChild(newRenderedComponent, renderedComponent);
+        renderedComponent = newRenderedComponent;
+    };
+});
