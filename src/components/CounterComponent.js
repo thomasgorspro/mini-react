@@ -10,7 +10,7 @@ class CounterComponent extends Component {
         this.setState({count: count+1});
     };
 
-    display = async () => {
+    display = () => {
         const {count = 0} = this.state;
         return {
             type: "h1",

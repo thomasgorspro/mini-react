@@ -11,7 +11,7 @@ export default class Component {
     setState = state => {
         this.previousState = this.state;
         this.state = state;
-        await this.render();
+        this.render();
         this.componentDidUpdate();
     }
 
@@ -26,12 +26,12 @@ export default class Component {
 
     render = () => {
         if(this.shouldUpdate()) {
-            this.renderedComponent = await this.createNode(await this.display());
+            this.renderedComponent = this.createNode(this.display());
         }
         return this.renderedComponent; 
     };
 
-    createNode = async element => {
+    createNode = element => {
         const { type, properties = {}, children = [] } = element;
         const newElement = document.createElement(type);
         Object.keys(properties).forEach(propertyName => {
@@ -50,8 +50,8 @@ export default class Component {
         });
 
         children.forEach(child => {
-           child = !(child instanceof Component) ? child : await child.display();  
-           const renderedChild =  await this.createNode(child)
+           child = !(child instanceof Component) ? child : child.display();  
+           const renderedChild = this.createNode(child)
            newElement.appendChild(renderedChild);
         });
         return newElement;
