@@ -2,6 +2,7 @@
 import Component from '../mini-react/components/Component.js';
 import CounterComponent from './CounterComponent.js';
 import NotFoundComponent from './NotFoundComponent.js';
+import WeatherComponent from './WeatherComponent.js';
 
 class HomeComponent extends Component {
 
@@ -33,6 +34,7 @@ class HomeComponent extends Component {
                         text: "Counter"
                     }
                 },
+                (new WeatherComponent()),
             ]
         }
     );
